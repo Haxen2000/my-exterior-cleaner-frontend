@@ -16,7 +16,7 @@ export default function Basic({ data }: BasicProps) {
           <HighlightedText
             text={data.title}
             tag="h1"
-            className="text-5xl font-bold leading-none sm:text-4xl text-center bg-white"
+            className="text-3xl font-bold leading-none sm:text-4xl text-center bg-white"
             color="dark:text-violet-400"
           />
           <hr className='mb-8 -mt-3 h-1 border-t-2 border-t-mec-light-blue' />
