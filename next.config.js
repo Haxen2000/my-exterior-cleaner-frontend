@@ -12,6 +12,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'abundant-song-65b2ac7eef.media.strapiapp.com',
       }
     ],
   },
