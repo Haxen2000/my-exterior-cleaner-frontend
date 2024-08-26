@@ -1,0 +1,17 @@
+.full-bleed {
+  background-color: $mec-dark-blue;
+
+  .lines {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+
+    &.top {
+      background-image: url(https://irp.cdn-website.com/4ba0f3cd/dms3rep/multi/top-divider-white.svg);
+    }
+
+    &.bottom {
+      background-image: url(https://irp.cdn-website.com/4ba0f3cd/dms3rep/multi/bottom-divider.svg);
+    }
+  }
+}

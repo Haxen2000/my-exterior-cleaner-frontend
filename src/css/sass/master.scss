@@ -1,0 +1,12 @@
+@import 'tailwindcss/base'; @import 'tailwindcss/components'; @import 'tailwindcss/utilities';
+@import "react-slideshow-image/dist/styles.css";
+
+@import 'abstracts/variables';
+
+/* FONTS */
+@import 'base/fonts';
+
+@import 'base/globals';
+
+@import 'components/basic';
+@import 'components/fullBleed';
