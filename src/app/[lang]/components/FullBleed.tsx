@@ -24,7 +24,7 @@ export default function FullBleed({ data }: FullBleedProps) {
           <HighlightedText
             text={data.body}
             tag="p"
-            className="tmt-6 mb-8 text-lg sm:mb-12"
+            className="mt-6 mb-8 text-lg sm:mb-12"
             color="dark:text-violet-400"
           />
         </div>

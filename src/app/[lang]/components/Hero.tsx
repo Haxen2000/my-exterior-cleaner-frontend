@@ -47,11 +47,11 @@ export default function Hero({ data }: HeroProps) {
             color="dark:text-violet-400"
           />
         </div>
-        <div className="flex items-center justify-center p-6 mt-8 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+        <div className="flex items-center justify-center p-6 mt-8 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 md:flex-col">
           <HighlightedText
             text={data.description}
             tag="p"
-            className="tmt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl"
+            className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl"
             color="dark:text-violet-400"
           />
           <Image
