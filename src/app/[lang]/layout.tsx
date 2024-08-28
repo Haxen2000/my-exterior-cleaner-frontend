@@ -22,6 +22,7 @@ async function getGlobal(lang: string): Promise<any> {
   const urlParamsObject = {
     populate: [
       "metadata.shareImage",
+      "business_hours",
       "favicon",
       "notificationBanner.link",
       "navbar.links",
@@ -80,12 +81,12 @@ export default async function RootLayout({
 }) {
   const global = await getGlobal(params.lang);
   const nav = await getNavbar(params.lang);
-  console.log('meta', global);
+  console.log('global', global.data.attributes);
   console.log('nav', nav);
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
   
-  const { notificationBanner, navbar, footer } = global.data.attributes;
+  const { notificationBanner, footer, business_hours, phone_number } = global.data.attributes;
   const { Links, Logo } = nav.data.attributes;
 
   const navbarLogoUrl = getStrapiMedia(
@@ -117,6 +118,8 @@ export default async function RootLayout({
           menuLinks={footer.menuLinks}
           legalLinks={footer.legalLinks}
           socialLinks={footer.socialLinks}
+          businessHours={business_hours}
+          phoneNumber={phone_number}
         />
       </body>
     </html>

@@ -3,8 +3,10 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
 import { CgWebsite } from "react-icons/cg";
-import { FaDiscord } from "react-icons/fa";
-import { AiFillTwitterCircle, AiFillYoutube } from "react-icons/ai";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaDiscord } from "react-icons/fa";
+import { FaXTwitter, FaPinterest, FaSnapchat, FaCcVisa, FaCcMastercard, FaCcAmex } from "react-icons/fa6";
+import { AiFillYoutube } from "react-icons/ai";
+import { BsCashStack } from "react-icons/bs";
 
 interface FooterLink {
   id: number;
@@ -33,16 +35,74 @@ function FooterLink({ url, text }: FooterLink) {
 function RenderSocialIcon({ social }: { social: string | undefined }) {
   switch (social) {
     case "WEBSITE":
-      return <CgWebsite />;
+      return <CgWebsite size={21} />;
     case "TWITTER":
-      return <AiFillTwitterCircle />;
+      return <FaXTwitter size={21} />;
     case "YOUTUBE":
-      return <AiFillYoutube />;
+      return <AiFillYoutube size={21} />;
     case "DISCORD":
-      return <FaDiscord />;
+      return <FaDiscord size={21} />;
+    case "FACEBOOK":
+      return <FaFacebookF size={21} />;
+    case "INSTAGRAM":
+      return <FaInstagram size={21} />;
+    case "LINKEDIN":
+      return <FaLinkedinIn size={21} />;
+    case "TIKTOK":
+      return <FaTiktok size={21} />;
+    case 'PINTEREST':
+      return <FaPinterest size={21} />;
+    case 'SNAPCHAT':
+      return <FaSnapchat size={21} />;
     default:
       return null;
   }
+}
+
+function RenderSocialLink({ link }: { link: FooterLink }) {
+  const { social } = link;
+  let bgColorClass = '';
+  switch (social) {
+    case "YOUTUBE":
+      bgColorClass = 'bg-yt-red';
+      break;
+    case "DISCORD":
+      bgColorClass = 'bg-fb-blue';
+      break;
+    case "FACEBOOK":
+      bgColorClass = 'bg-fb-blue';
+      break;
+    case "INSTAGRAM":
+      bgColorClass = 'bg-ig-red';
+      break;
+    case "LINKEDIN":
+      bgColorClass = 'bg-li-blue';
+      break;
+    case 'PINTEREST':
+      bgColorClass = 'bg-pt-red';
+      break;
+    case 'SNAPCHAT':
+      bgColorClass = 'bg-sc-yel';
+      break;
+    case "TWITTER":
+    case "TIKTOK":
+    case "WEBSITE":
+    default:
+      bgColorClass = 'bg-black';
+      break;
+  }
+  return (
+    <a
+      key={link.id}
+      rel="noopener noreferrer"
+      href={link.url}
+      title={link.text}
+      target={link.newTab ? "_blank" : "_self"}
+      className={`flex items-center justify-center w-10 h-10 rounded-full ${bgColorClass}`}
+    >
+      <RenderSocialIcon social={social} />
+    </a>
+  );
 }
 
 export default function Footer({
@@ -51,31 +111,61 @@ export default function Footer({
   menuLinks,
   legalLinks,
   socialLinks,
+  businessHours,
+  phoneNumber,
 }: {
   logoUrl: string | null;
   logoText: string | null;
   menuLinks: Array<FooterLink>;
   legalLinks: Array<FooterLink>;
   socialLinks: Array<FooterLink>;
+  businessHours: any;
+  phoneNumber: string;
 }) {
 
   return (
-    <footer className="py-6 bg-white text-black">
+    <footer className="py-6 bg-mec-dark-blue text-white">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
         <div className="grid grid-cols-12">
-          <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
+          <div className="pb-6 col-span-full md:pb-0 md:col-span-3">
             <Logo src={logoUrl}>
               {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
             </Logo>
           </div>
 
-          <div className="col-span-6 text-center md:text-left md:col-span-3">
+          <div className="col-span-6 text-center md:text-left md:col-span-2">
             <p className="pb-1 text-lg font-medium">Menu</p>
             <ul>
               {menuLinks.map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
               ))}
             </ul>
+          </div>
+
+          <div className="col-span-6 text-center md:text-left md:col-span-4">
+            <p className="pb-1 text-lg font-medium">Phone Number: { phoneNumber }</p>
+            <p className="pb-1 text-lg font-medium">Licensed and insured in the state of GA</p>
+            <div className="flex gap-3">
+              <FaCcVisa size={51} />
+              <FaCcMastercard size={51} />
+              <FaCcAmex size={51} />
+              <BsCashStack size={51} />
+            </div>
+          </div>
+
+          <div className="col-span-6 text-center md:text-left md:col-span-3">
+            <p className="pb-1 text-lg font-medium">Business Hours</p>
+              {businessHours &&
+                <ul>
+                  <li>Monday: {businessHours.Monday}</li>
+                  <li>Tuesday: {businessHours.Tuesday}</li>
+                  <li>Wednesday: {businessHours.Wednesday}</li>
+                  <li>Thursday: {businessHours.Thursday}</li>
+                  <li>Friday: {businessHours.Friday}</li>
+                  <li>Saturday: {businessHours.Saturday}</li>
+                  <li>Sunday: {businessHours.Sunday}</li>
+                </ul>
+              }
           </div>
         </div>
         <div className="grid justify-center pt-6 lg:justify-between">
@@ -97,18 +187,7 @@ export default function Footer({
           </div>
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             {socialLinks.map((link: FooterLink) => {
-              return (
-                <a
-                  key={link.id}
-                  rel="noopener noreferrer"
-                  href={link.url}
-                  title={link.text}
-                  target={link.newTab ? "_blank" : "_self"}
-                  className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
-                >
-                  <RenderSocialIcon social={link.social} />
-                </a>
-              );
+              return <RenderSocialLink link={link} />;
             })}
           </div>
         </div>
