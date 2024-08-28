@@ -81,7 +81,7 @@ export default async function RootLayout({
 }) {
   const global = await getGlobal(params.lang);
   const nav = await getNavbar(params.lang);
-  console.log('global', global.data.attributes);
+  console.log('global', global.data?.attributes);
   console.log('nav', nav);
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
