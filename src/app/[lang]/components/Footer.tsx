@@ -187,7 +187,7 @@ export default function Footer({
           </div>
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             {socialLinks.map((link: FooterLink) => {
-              return <RenderSocialLink link={link} />;
+              return <RenderSocialLink link={link} key={link.id} />;
             })}
           </div>
         </div>
