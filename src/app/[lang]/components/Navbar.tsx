@@ -85,7 +85,6 @@ export default function Navbar({
         <div className="items-center flex-shrink-0 hidden lg:flex">
           <ul className="items-stretch hidden space-x-3 lg:flex">
             {links.map((item: StrapiObject, key: Key) => {
-              console.log(item);
               if (item.__component === 'links.link') {
                 var navItem = item;
                 return <NavLink key={navItem.id} {...navItem} />

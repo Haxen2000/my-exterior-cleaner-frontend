@@ -10,7 +10,7 @@ import Contact from "../components/Contact";
 import ImageSlider from "../components/ImageSlider";
 
 export function sectionRenderer(section: any, index: number) {
-  console.log('[sectionRenderer]', section.__component)
+  // console.log('[sectionRenderer]', section.__component)
   switch (section.__component) {
     case "sections.hero":
       return <Hero key={index} data={section} />;

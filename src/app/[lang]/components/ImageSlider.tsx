@@ -19,7 +19,7 @@ interface SlidShowProps {
 }
 
 export default function Slideshow({ data }: { data: SlidShowProps }) {
-  console.log('Slideshow', data);
+  // console.log('Slideshow', data);
   return (
     <div className="slide-container max-w-4xl m-auto">
       <Fade>

@@ -15,7 +15,6 @@ export default function Contact ({ data }: ContactProps) {
         <div className="flex flex-col justify-center text-center rounded-lg lg:max-w-md xl:max-w-5xl lg:text-left">
           <Markdown children={data.body} remarkPlugins={[remarkGfm]} components={{
                 a: props => {
-                    console.log('props test', props);
                     return props.href?.startsWith('tel/') ? (
                         // <CustomTwitterComponent url={props.href} /> // Render Twitter links with custom component
                         <a href={props.href.replace('tel/', 'tel:')}>{props.children}</a>
