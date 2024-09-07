@@ -16,15 +16,15 @@ export default function Basic({ data }: BasicProps) {
           <HighlightedText
             text={data.title}
             tag="h1"
-            className="text-3xl font-bold leading-none sm:text-4xl text-center bg-white"
+            className="text-xl md:text-3xl font-bold leading-none sm:text-4xl text-center bg-white"
             color="dark:text-violet-400"
           />
-          <hr className='mb-8 -mt-3 h-1 border-t-2 border-t-mec-light-blue' />
+          <hr className='mb-3 md:mb-8 -mt-1 md:-mt-3 h-1 border-t-2 border-t-mec-light-blue' />
 
           <HighlightedText
             text={data.body}
             tag="p"
-            className="mt-6 mb-8 text-lg sm:mb-12"
+            className="my-3 md:my-6 text-md md:text-lg sm:mb-12"
             color="dark:text-violet-400"
           />
         </div>

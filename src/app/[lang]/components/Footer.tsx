@@ -98,7 +98,7 @@ function RenderSocialLink({ link }: { link: FooterLink }) {
       href={link.url}
       title={link.text}
       target={link.newTab ? "_blank" : "_self"}
-      className={`flex items-center justify-center w-10 h-10 rounded-full ${bgColorClass}`}
+      className={`flex items-center justify-center w-8 h-8 m:w-10 m:h-10 rounded-full ${bgColorClass}`}
     >
       <RenderSocialIcon social={social} />
     </a>
@@ -153,7 +153,7 @@ export default function Footer({
             </div>
           </div>
 
-          <div className="col-span-6 text-center md:text-left md:col-span-3">
+          <div className="col-span-12 text-center md:text-left md:col-span-3">
             <p className="pb-1 text-lg font-medium">Business Hours</p>
               {businessHours &&
                 <ul>
@@ -169,8 +169,8 @@ export default function Footer({
           </div>
         </div>
         <div className="grid justify-center pt-6 lg:justify-between">
-          <div className="flex">
-            <span className="mr-2">
+          <div className="flex flex-wrap justify-center">
+            <span className="mr-2 text-center">
               ©{new Date().getFullYear()} All rights reserved
             </span>
             <ul className="flex">

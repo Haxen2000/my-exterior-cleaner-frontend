@@ -39,7 +39,7 @@ export default function Hero({ data }: HeroProps) {
   return (
     <section className="bg-white text-black hero">
       <div className="container flex flex-col justify-center items-center p-6 mx-auto sm:py-12 lg:py-24">
-        <div className="flex flex-col justify-center p-6 text-center lg:max-w-xl xl:max-w-7xl border-b-4">
+        <div className="flex flex-col justify-center py-6 md:px-6 text-center lg:max-w-xl xl:max-w-7xl border-b-4">
           <HighlightedText
             text={data.title}
             tag="h1"
@@ -47,7 +47,7 @@ export default function Hero({ data }: HeroProps) {
             color="dark:text-violet-400"
           />
         </div>
-        <div className="flex items-center justify-center p-6 mt-8 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 flex-col md:flex-row">
+        <div className="flex items-center justify-center text-center md:text-left py-6 md:px-6 md:mt-8 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 flex-col md:flex-row">
           <HighlightedText
             text={data.description}
             tag="p"

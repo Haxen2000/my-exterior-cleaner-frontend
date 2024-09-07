@@ -8,7 +8,7 @@ p {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 28px;
 }
 
 h2 {
@@ -17,4 +17,10 @@ h2 {
 
 * {
   border-color: rgb(53, 112, 184);
+}
+
+@media (min-width: 640px) {
+  h1 {
+    font-size: 40px;
+  }
 }

@@ -21,6 +21,7 @@ interface StrapiObject extends NavLink {
 
 interface MobileNavLink extends NavLink {
   closeMenu: () => void;
+  className?: string;
 }
 
 function NavLink({ url, text }: NavLink) {
@@ -40,7 +41,7 @@ function NavLink({ url, text }: NavLink) {
   );
 }
 
-function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
+function MobileNavLink({ url, text, closeMenu, className='' }: MobileNavLink) {
   const path = usePathname();
   const handleClick = () => {
     closeMenu();
@@ -50,7 +51,7 @@ function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
       <Link
         href={url}
         onClick={handleClick}
-        className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-gray-900 ${
+        className={`${className}-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-gray-900 ${
           path === url && "dark:text-violet-400 dark:border-violet-400"
         }}`}
       >
@@ -91,7 +92,7 @@ export default function Navbar({
               }
               else {
                 return (
-                  <div  className="relative inline-block text-left" key={key} >
+                  <div className="relative inline-block text-left" key={key} >
                     <Button className="peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-gray-900 hover:bg-gray-50">
                       {item.title}
                     </Button>
@@ -143,14 +144,28 @@ export default function Navbar({
             </div>
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-700">
-                <div className="space-y-2 py-6">
-                  {/* {links.map((item) => (
-                    <MobileNavLink
-                      key={item.id}
-                      closeMenu={closeMenu}
-                      {...item}
-                    />
-                  ))} */}
+                <div className="space-y-2 py-6 text-white">
+                  {links.map((item: StrapiObject, key: Key) => {
+                    if (item.__component === 'links.link') {
+                      var navItem = item;
+                      return <MobileNavLink key={navItem.id} closeMenu={closeMenu} {...navItem} />
+                    }
+                    else {
+                      return (
+                        <>
+                          <div className='border-b leading-7 pt-2 !mt-0 mb-2 w-2/5 font-semibold'>{item.title}</div>
+                          {item.links?.map((link, itemKey:Key) => (
+                            <MobileNavLink
+                              key={itemKey}
+                              closeMenu={closeMenu}
+                              className="ml-2 "
+                              {...link}
+                            />
+                          ))}
+                        </>
+                      )
+                    }
+                  })}
                 </div>
               </div>
             </div>
@@ -160,7 +175,7 @@ export default function Navbar({
           className="p-4 lg:hidden"
           onClick={() => setMobileMenuOpen(true)}
         >
-          <Bars3Icon className="h-7 w-7 text-gray-100" aria-hidden="true" />
+          <Bars3Icon className="h-7 w-7" aria-hidden="true" />
         </button>
       </div>
     </div>

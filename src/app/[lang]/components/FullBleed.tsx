@@ -17,14 +17,14 @@ export default function FullBleed({ data }: FullBleedProps) {
           <HighlightedText
             text={data.title}
             tag="h1"
-            className="text-5xl font-bold leading-none sm:text-6xl mb-8"
+            className="text-3xl md:text-5xl font-bold leading-none sm:text-6xl mb-8"
             color="dark:text-violet-400"
           />
 
           <HighlightedText
             text={data.body}
             tag="p"
-            className="mt-6 mb-8 text-lg sm:mb-12"
+            className="mt-6 mb-8 text-md md:text-lg sm:mb-12"
             color="dark:text-violet-400"
           />
         </div>
