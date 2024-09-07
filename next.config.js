@@ -15,7 +15,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'abundant-song-65b2ac7eef.media.strapiapp.com',
+        hostname: 'integral-leader-610e0a85a4.media.strapiapp.com',
       }
     ],
   },
