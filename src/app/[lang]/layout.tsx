@@ -106,7 +106,7 @@ export default async function RootLayout({
           logoText={Logo.text}
         />
 
-        <main className="bg-white text-black min-h-screen">
+        <main className="bg-white text-mec-dark-blue min-h-screen">
           {children}
         </main>
 

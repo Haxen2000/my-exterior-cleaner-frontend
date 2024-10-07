@@ -2,7 +2,7 @@
 import Logo from "./Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Dialog, Menu, MenuButton, MenuItems, MenuItem, Button } from "@headlessui/react";
+import { Dialog, Button, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Key, useState } from "react";
 
@@ -32,8 +32,8 @@ function NavLink({ url, text }: NavLink) {
       <Link
         href={url}
         className={`flex items-center mx-4 -mb-1 border-b-2 dark:border-transparent ${
-          path === url && "dark:text-violet-400 dark:border-violet-400"
-        }}`}
+          path === url ? "dark:text-violet-400 dark:border-violet-400" : ''
+        }`}
       >
         {text}
       </Link>
@@ -51,9 +51,9 @@ function MobileNavLink({ url, text, closeMenu, className='' }: MobileNavLink) {
       <Link
         href={url}
         onClick={handleClick}
-        className={`${className}-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-gray-900 ${
-          path === url && "dark:text-violet-400 dark:border-violet-400"
-        }}`}
+        className={`${className}-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-900 ${
+          path === url ? "dark:text-violet-400 dark:border-violet-400" : ''
+        }`}
       >
         {text}
       </Link>
@@ -74,10 +74,9 @@ export default function Navbar({
   const closeMenu = () => {
     setMobileMenuOpen(false);
   };
-  const [isShowing, setIsShowing] = useState(false)
 
   return (
-    <div className="p-4 bg-white text-black">
+    <div className="p-4 bg-white text-mec-dark-blue navbar">
       <div className="container flex justify-between h-24 mx-auto px-0 sm:px-6">
         <Logo src={logoUrl}>
           {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
@@ -93,7 +92,7 @@ export default function Navbar({
               else {
                 return (
                   <div className="relative inline-block text-left" key={key} >
-                    <Button className="peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-gray-900 hover:bg-gray-50">
+                    <Button className="peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 hover:bg-gray-50">
                       {item.title}
                     </Button>
 
@@ -103,7 +102,7 @@ export default function Navbar({
                           <div key={itemKey}>
                             <a
                               href={link.url}
-                              className="block px-4 py-2 text-sm text-gray-700 hover:text-mec-dark-blue data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                              className="block px-4 py-2 text-sm hover:text-mec-dark-blue data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
                             >
                               {link.text}
                             </a>
@@ -121,13 +120,13 @@ export default function Navbar({
 
         <Dialog
           as="div"
-          className="lg:hidden"
+          className="lg:hidden text-white mobile-nav"
           open={mobileMenuOpen}
           onClose={setMobileMenuOpen}
         >
           <div className="fixed inset-0 z-40 bg-gray-600 bg-opacity-75" />{" "}
           {/* Overlay */}
-          <Dialog.Panel className="fixed inset-y-0 rtl:left-0 ltr:right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10">
+          <DialogPanel className="fixed inset-y-0 rtl:left-0 ltr:right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Strapi</span>
@@ -169,7 +168,7 @@ export default function Navbar({
                 </div>
               </div>
             </div>
-          </Dialog.Panel>
+          </DialogPanel>
         </Dialog>
         <button
           className="p-4 lg:hidden"
