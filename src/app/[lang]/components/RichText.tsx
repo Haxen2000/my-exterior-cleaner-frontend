@@ -11,7 +11,7 @@ interface RichTextProps {
 export default function RichText({ data }: RichTextProps) {
   // TODO: STYLE THE MARKDOWN
   return (
-    <section className="rich-text py-6 px-20">
+    <section className="rich-text py-6 px-6 md:px-20">
       <Markdown children={data.content || data.body} remarkPlugins={[remarkGfm]} />
     </section>
   );
