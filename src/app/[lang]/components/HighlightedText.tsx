@@ -11,6 +11,7 @@ export default function HighlightedText({
   className,
   color,
 }: HighlightedTextProps) {
+  text = text.replaceAll('\n', '<br />');
   const tempText = text.split(" ");
   let result = [];
 
