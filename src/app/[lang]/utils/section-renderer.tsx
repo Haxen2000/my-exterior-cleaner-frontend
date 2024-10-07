@@ -32,7 +32,7 @@ export function sectionRenderer(section: any, index: number) {
     case "sections.contact":
       return <Contact key={index} data={section} />;
     case "sections.large-video":
-      return <LargeVideo key={index} data={section.video.data.attributes} />;
+      return <LargeVideo key={index} data={section} />;
     case "shared.slider":
       return <ImageSlider key={index} data={section} />;
     default:

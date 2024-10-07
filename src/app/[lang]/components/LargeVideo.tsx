@@ -1,21 +1,29 @@
 import { getStrapiMedia } from "../utils/api-helpers";
 
-interface VideoProps {
-  id: number;
-  url: string;
+interface VideoBlockProps {
+  video: { data: { attributes: VideoProps } }
   width?: string;
   height?: string;
 }
+interface VideoProps {
+  id: number;
+  url: string;
+  mime: string;
+}
 
-export default function LargeVideo({ data }: { data: VideoProps }) {
+
+export default function LargeVideo({ data }: { data: VideoBlockProps }) {
+  const vidData = data.video.data.attributes
   const videoUrl = getStrapiMedia(
-    data?.url
+    vidData?.url
   );
 
   return (
-    <video width={data.width || "100%"} height={data.height || "100%"} controls preload="none" className="video-player relative pb-56.25 h-72 lg:h-[450px] overflow-hidden my-8">
-      <source src={videoUrl || ""} />
-      Your browser does not support the video tag.
-    </video>
+    <div className="flex justify-center">
+      <video width={data.width || "100%"} height={data.height || "100%"} controls preload="none" className="video-player relative pb-56.25 h-72 lg:h-[450px] overflow-hidden my-8">
+        <source src={videoUrl || ""} type={vidData.mime || ""} />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   );
 }
