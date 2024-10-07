@@ -134,7 +134,7 @@ export default function Footer({
           </div>
 
           <div className="col-span-6 text-center md:text-left md:col-span-2">
-            <p className="pb-1 text-lg font-medium">Menu</p>
+            <p className="pb-1 sm:text-md text-lg font-medium">Menu</p>
             <ul>
               {menuLinks.map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
@@ -143,8 +143,8 @@ export default function Footer({
           </div>
 
           <div className="col-span-6 text-center md:text-left md:col-span-4">
-            <p className="pb-1 text-lg font-medium">Phone Number: { phoneNumber }</p>
-            <p className="pb-1 text-lg font-medium">Licensed and insured in the state of GA</p>
+            <p className="pb-1 sm:text-md text-lg font-medium">Phone Number: { phoneNumber }</p>
+            <p className="pb-1 sm:text-md text-lg font-medium">Licensed and insured in the state of GA</p>
             <div className="flex gap-3">
               <FaCcVisa size={51} />
               <FaCcMastercard size={51} />
@@ -154,7 +154,7 @@ export default function Footer({
           </div>
 
           <div className="col-span-12 text-center md:text-left md:col-span-3">
-            <p className="pb-1 text-lg font-medium">Business Hours</p>
+            <p className="pb-1 sm:text-md text-lg font-medium">Business Hours</p>
               {businessHours &&
                 <ul>
                   <li>Monday: {businessHours.Monday}</li>

@@ -31,11 +31,12 @@ interface Article {
         };
         blocks: any[];
         publishedAt: string;
+        publishDate: string;
     };
 }
 
 export default function Post({ data }: { data: Article }) {
-    const { title, description, publishedAt, cover, authorsBio } = data.attributes;
+    const { title, description, publishedAt, publishDate, cover, authorsBio } = data.attributes;
     const author = authorsBio.data?.attributes;
     const imageUrl = getStrapiMedia(cover.data?.attributes.url);
     const authorImgUrl = getStrapiMedia(authorsBio.data?.attributes.avatar.data?.attributes.url);
@@ -52,7 +53,7 @@ export default function Post({ data }: { data: Article }) {
                 />
             )}
             <div className="space-y-6">
-                <h1 className="leading-tight text-5xl font-bold ">{title}</h1>
+                <h1 className="leading-tight sm:text-3xl text-5xl font-bold">{title}</h1>
                 <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center">
                     <div className="flex items-center md:space-x-2">
                         {authorImgUrl && (
@@ -65,7 +66,8 @@ export default function Post({ data }: { data: Article }) {
                             />
                         )}
                         <p className="text-md">
-                            {author && author.name} • {formatDate(publishedAt)}
+                            {author && author.name}
+                            {/* {author && author.name} • {formatDate(publishDate) || formatDate(publishedAt)} */}
                         </p>
                     </div>
                 </div>
