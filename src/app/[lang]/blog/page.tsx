@@ -67,7 +67,7 @@ export default function Profile() {
   if (isLoading) return <Loader />;
 
   return (
-    <div>
+    <div className="flex flex-col">
       <PageHeader heading="Our Blog" text="" />
       <Blog data={data}>
         {meta!.pagination.start + meta!.pagination.limit <

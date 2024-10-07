@@ -77,7 +77,7 @@ export default function Navbar({
 
   return (
     <div className="p-4 bg-white text-mec-dark-blue navbar">
-      <div className="container flex justify-between h-24 mx-auto px-0 sm:px-6">
+      <div className="container flex justify-between mx-auto px-0 sm:px-6">
         <Logo src={logoUrl}>
           {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
         </Logo>
