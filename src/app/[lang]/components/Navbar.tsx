@@ -151,7 +151,7 @@ export default function Navbar({
                     }
                     else {
                       return (
-                        <>
+                        <div key={key}>
                           <div className='border-b leading-7 pt-2 !mt-0 mb-2 w-2/5 font-semibold'>{item.title}</div>
                           {item.links?.map((link, itemKey:Key) => (
                             <MobileNavLink
@@ -161,7 +161,7 @@ export default function Navbar({
                               {...link}
                             />
                           ))}
-                        </>
+                        </div>
                       )
                     }
                   })}
