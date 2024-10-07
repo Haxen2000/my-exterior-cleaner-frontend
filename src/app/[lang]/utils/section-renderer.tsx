@@ -8,6 +8,7 @@ import FullBleed from "../components/FullBleed";
 import Basic from "../components/Basic";
 import Contact from "../components/Contact";
 import ImageSlider from "../components/ImageSlider";
+import VideoEmbed from "../components/VideoEmbed";
 
 export function sectionRenderer(section: any, index: number) {
   // console.log('[sectionRenderer]', section.__component)
@@ -30,6 +31,8 @@ export function sectionRenderer(section: any, index: number) {
       return <Basic key={index} data={section} />;
     case "sections.contact":
       return <Contact key={index} data={section} />;
+    case "sections.large-video":
+      return <VideoEmbed key={index} data={section} />;
     case "shared.slider":
       return <ImageSlider key={index} data={section} />;
     default:
