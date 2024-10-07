@@ -10,7 +10,7 @@ interface BasicProps {
 
 export default function Basic({ data }: BasicProps) {
   return (
-    <section className="bg-white text-black basic">
+    <section className="bg-white basic">
       <div className="container flex flex-col justify-center p-6 mx-auto lg:flex-row">
         <div className="flex flex-col justify-center text-center rounded-lg lg:max-w-md xl:max-w-5xl lg:text-left">
           <HighlightedText
