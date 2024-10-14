@@ -66,6 +66,7 @@ export async function generateMetadata({ params } : { params: {lang: string}}): 
   return {
     title: metadata.metaTitle,
     description: metadata.metaDescription,
+    keywords: metadata.metaKeywords,
     icons: {
       icon: [new URL(url, getStrapiURL())],
     },
