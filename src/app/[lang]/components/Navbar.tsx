@@ -102,7 +102,7 @@ export default function Navbar({
                         {item.links?.map((link, itemKey:Key) => (
                           <div key={itemKey}>
                             <a
-                              href={link.url}
+                              href={link.page.data?.attributes.slug !== undefined && link.page.data?.attributes.slug !== 'home' ? link.page.data?.attributes.slug : (link.url || "")}
                               className="block px-4 py-2 text-sm hover:text-mec-dark-blue data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
                             >
                               {link.text}
