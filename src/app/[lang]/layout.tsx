@@ -91,7 +91,7 @@ export default async function RootLayout({
 
   const navbarLogoUrl = getStrapiMedia(
     Logo.logo?.data.attributes.url
-  );
+  ) || '/';
 
   const footerLogoUrl = getStrapiMedia(
     footer.footerLogo.logoImg.data.attributes.url

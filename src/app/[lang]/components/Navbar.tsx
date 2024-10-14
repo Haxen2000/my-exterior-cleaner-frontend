@@ -11,6 +11,7 @@ interface NavLink {
   url: string;
   newTab: boolean;
   text: string;
+  page: { data: { attributes: { slug: string } } };
 }
 
 interface StrapiObject extends NavLink {
@@ -24,13 +25,13 @@ interface MobileNavLink extends NavLink {
   className?: string;
 }
 
-function NavLink({ url, text }: NavLink) {
+function NavLink({ url, text, page }: NavLink) {
   const path = usePathname();
 
   return (
     <li className="flex">
       <Link
-        href={url}
+        href={page.data?.attributes.slug !== undefined && page.data?.attributes.slug !== 'home' ? page.data?.attributes.slug : (url || "")}
         className={`flex items-center mx-4 -mb-1 border-b-2 dark:border-transparent ${
           path === url ? "dark:text-violet-400 dark:border-violet-400" : ''
         }`}
@@ -67,7 +68,7 @@ export default function Navbar({
   logoText,
 }: {
   links: Array<StrapiObject>;
-  logoUrl: string | null;
+  logoUrl: string | "/";
   logoText: string | null;
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
